@@ -5,6 +5,8 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
+import ErrorPage from './pages/ErrorPage';
+import ProductDetails from './pages/ProductDetails';
 
 const App = () => {
 
@@ -12,6 +14,7 @@ const App = () => {
     {
       path: "/",
       element: <Layout />,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: "/",
@@ -26,6 +29,11 @@ const App = () => {
         {
           path: "/contact",
           element: <Contact />
+          
+        },
+        {
+          path: "/products/:id",
+          element: <ProductDetails />
           
         },
       ]  
