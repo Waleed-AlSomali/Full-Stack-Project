@@ -1,11 +1,14 @@
-import React from 'react'
+// import React from 'react'
+// import Product from './Product';
 
-const Products = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-};
+// const Products = ({products}) => {
+//   return (
+//     <div>
+//       <section>
+//       {products.map((product) => <Product product={product} key={product.id} />)}
+//       </section>
+//     </div>
+//   )
+// };
 
-export default Products;
+// export default Products;
