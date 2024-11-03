@@ -7,6 +7,7 @@ import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import ErrorPage from './pages/ErrorPage';
 import ProductDetails from './pages/ProductDetails';
+import { ProductProvider } from './context/ProductContext';
 
 const App = () => {
 
@@ -41,11 +42,9 @@ const App = () => {
   ]);
 
   return (
-    <>
-      <div>
+      <ProductProvider>
         <RouterProvider router={router} />
-      </div>
-    </>
+      </ProductProvider>
   )
 }
 
