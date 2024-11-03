@@ -7,6 +7,7 @@ export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
 
+    
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -27,7 +28,7 @@ export const ProductProvider = ({ children }) => {
         fetchProductsData();
     }, []);
 
-    return <ProductContext.Provider value={{products , isLoading, error, setProducts}}>
+    return <ProductContext.Provider value={{products, isLoading, error, setProducts}}>
         {children}</ProductContext.Provider>
 };
 

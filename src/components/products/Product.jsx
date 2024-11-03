@@ -6,7 +6,7 @@ import { ProductContext } from '../../context/ProductContext';
 
 const Product = ({ product }) => {
 
-    const { products, setProducts } = useContext (ProductContext);
+    const { products, setProducts } = useContext(ProductContext);
 
     const handleDeleteProduct = (productID) => {
         const filteredProducts = products.filter((product) => product.productID !== productID);
@@ -18,7 +18,7 @@ const Product = ({ product }) => {
         <p>Quantity = {product.quantity}</p>
         <p>Price = {product.price}$</p>
         <p>{product.description}</p>
-        <Link to={`products/id`}>Show details</Link> <button onClick={handleDeleteProduct}>Delete</button>
+        <Link to={`products/${product.productID}`}>Show details</Link> <button onClick={handleDeleteProduct}>Delete</button>
     </article>
     );
 };
