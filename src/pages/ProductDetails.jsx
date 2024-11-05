@@ -11,8 +11,8 @@ const ProductDetails = () => {
 
   const fetchProductData = async (id) => {
     const singleProductData = await getSingleProduct(id);
-    console.log(singleProductData.data);
-    setProduct(singleProductData.data);
+    console.log(singleProductData);
+    setProduct(singleProductData);
   };
 
   useEffect(() => {

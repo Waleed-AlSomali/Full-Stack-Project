@@ -8,17 +8,17 @@ const Product = ({ product }) => {
 
     const { products, setProducts } = useContext(ProductContext);
 
-    const handleDeleteProduct = (productID) => {
-        const filteredProducts = products.filter((product) => product.productID !== productID);
-        setProducts(filteredProducts);
-    };
+    // const handleDeleteProduct = (productID) => {
+    //     const filteredProducts = products.filter((product) => product.productID !== productID);
+    //     setProducts(filteredProducts);
+    // };
 
     return (<article key={product.productID}>
         <h3>Title = {product.title}</h3>
         <p>Quantity = {product.quantity}</p>
         <p>Price = {product.price}$</p>
         <p>{product.description}</p>
-        <Link to={`products/${product.productID}`}>Show details</Link> <button onClick={handleDeleteProduct}>Delete</button>
+        { <Link to={`products/${product.productID}`}>Show details</Link> /* <button onClick={handleDeleteProduct}>Delete</button> */}
     </article>
     );
 };

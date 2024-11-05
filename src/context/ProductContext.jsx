@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
-
-import { getAllProducts, getSingleProduct } from "../services/productService";
 import PropTypes from "prop-types";
+
+import { getAllProducts } from "../services/productService";
 
 export const ProductContext = createContext();
 
@@ -16,8 +16,9 @@ export const ProductProvider = ({ children }) => {
     const fetchProductsData = async () => {
         try {
             setIsLoading(true);
-            const productsData = await getAllProducts();
-            setProducts(productsData.data);
+            const allProducts = await getAllProducts();
+            setProducts(allProducts);
+            console.log(allProducts);
             setIsLoading(false);
         } catch (error) {
             setError(error);
