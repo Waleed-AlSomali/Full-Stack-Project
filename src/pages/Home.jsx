@@ -1,23 +1,19 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { Container, Typography } from '@mui/material';
 
 import Products from '../components/products/Products';
-import { ProductContext } from '../context/ProductContext';
+// import SearchInput from '../components/products/SearchInput';
+
 
 const Home = () => {
-  const { isLoading, error, products } = useContext(ProductContext);
-
-  if (isLoading) {
-    return <h2>Products are loading...</h2>;
-  }
-  if (error) {
-    return <h2>{error.message}</h2>;
-  }
-
   return (
-    <div>
-      <h1>Welcome to my humble store</h1>
-      <Products products={products} />
-    </div>
+    <Container>
+      <Typography variant='h4' gutterBottom>
+        Welcome to my humble store
+      </Typography>
+      {/* <SearchInput /> */}
+      <Products />
+    </Container>
   );
 };
 

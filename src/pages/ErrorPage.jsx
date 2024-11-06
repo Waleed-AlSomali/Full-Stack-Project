@@ -1,5 +1,7 @@
+import { Container, ToggleButton, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate, useRouteError } from "react-router-dom";
+import Navbar from "../components/layout/Navbar";
 
 
 export default function ErrorPage() {
@@ -12,12 +14,13 @@ export default function ErrorPage() {
   
 
   return (
-    <div id="error-page">
-      <h1>Page not found</h1>
-      <p>
-        <em>{error.statusText || error.message}</em>
-      </p>
-      <button onClick={handleGoToHomePage}>Go to home page</button>
+    <div>
+      <Navbar />
+    <Container id="error-page">
+      <Typography variant="h2">Page not found</Typography> 
+        <Typography variant="h2">{error.statusText || error.message}</Typography>
+      <ToggleButton onClick={handleGoToHomePage}>Go to home page</ToggleButton>
+    </Container>
     </div>
   )
 };

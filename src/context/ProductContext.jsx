@@ -7,10 +7,11 @@ export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
 
-    
+
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [searchValue, setSearchValue] = useState('')
     // const [cartItem, setCartItem] = useState([])
 
     const fetchProductsData = async () => {
@@ -29,7 +30,9 @@ export const ProductProvider = ({ children }) => {
         fetchProductsData();
     }, []);
 
-    return <ProductContext.Provider value={{products, isLoading, error, setProducts}}>
+    // console.log(searchValue)
+
+    return <ProductContext.Provider value={{ products, isLoading, error, setProducts, setSearchValue }}>
         {children}</ProductContext.Provider>
 };
 
