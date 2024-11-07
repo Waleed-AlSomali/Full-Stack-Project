@@ -1,23 +1,26 @@
-// import { TextField } from '@mui/material'
-// import React, { useContext } from 'react'
-// import { ProductContext } from '../../context/ProductContext';
+import { Button, TextField } from '@mui/material'
+import React, { useContext } from 'react'
 
-// const SearchInput = () => {
-//     const {setSearchValue} = useContext(ProductContext);
+import { ProductContext } from '../../context/ProductContext';
 
-//     const handleSearchChange = (event) => {
-//         setSearchValue(event.target.value);
-//     };
-//     return (
-//         <TextField
-//             label="Search Products"
-//             variant="outlined"
-            
+const SearchInput = () => {
+    const { setSearchField } = useContext(ProductContext);
 
-//             onChange={handleSearchChange}
-//             margin="normal"
-//         />
-//     )
-// }
+    const handleSearchChange = (event) => {
+        console.log(event.target.value)
+        setSearchField(event.target.value);
+    };
+    return (
 
-// export default SearchInput;
+        <TextField
+            label="Search Products"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            onChange={handleSearchChange}
+        />
+
+    )
+}
+
+export default SearchInput;
