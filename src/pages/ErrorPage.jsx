@@ -11,16 +11,16 @@ export default function ErrorPage() {
   const handleGoToHomePage = () => {
     navigate('/');
   }
-  
+
 
   return (
     <div>
       <Navbar />
-    <Container id="error-page">
-      <Typography variant="h2">Page not found</Typography> 
+      <Container id="error-page">
+        <Typography variant="h2">Page not found</Typography>
         <Typography variant="h2">{error.statusText || error.message}</Typography>
-      <ToggleButton onClick={handleGoToHomePage}>Go to home page</ToggleButton>
-    </Container>
+        <ToggleButton onClick={handleGoToHomePage}>Go to home page</ToggleButton>
+      </Container>
     </div>
   )
 };

@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <Container>
       <Typography variant='h4' gutterBottom>
-        Welcome to my humble store
+        List of the Available Products:
       </Typography>
 
       <Box sx={{ mb: 4 }}>

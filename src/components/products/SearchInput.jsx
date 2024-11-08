@@ -11,7 +11,6 @@ const SearchInput = () => {
         setSearchField(event.target.value);
     };
     return (
-
         <TextField
             label="Search Products"
             variant="outlined"
@@ -19,7 +18,6 @@ const SearchInput = () => {
             margin="normal"
             onChange={handleSearchChange}
         />
-
     )
 }
 

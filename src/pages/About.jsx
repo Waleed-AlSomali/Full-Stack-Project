@@ -1,11 +1,17 @@
+import { Box, Typography } from '@mui/material';
 import React from 'react'
 
 const About = () => {
   return (
-    <div>
-      <h1>About page</h1>
-      <h3>This is a full stack project training made by Integrify in SDA Riyadh</h3>
-    </div>
+    <Box sx={{ padding: '2rem', minHeight: '10vh' }}>
+      <Typography variant="h1" sx={{ color: '#512D6D', marginBottom: '1rem' }}>
+        About Page
+      </Typography>
+
+      <Typography variant="h3" sx={{ color: '#512D6D' }}>
+        This is a full stack project training made by Integrify in SDA Riyadh
+      </Typography>
+    </Box>
   )
 };
 

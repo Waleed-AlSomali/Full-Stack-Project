@@ -33,4 +33,3 @@ const SortProducts = () => {
   )
 }
 export default SortProducts;
-

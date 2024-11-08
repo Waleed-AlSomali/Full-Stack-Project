@@ -3,8 +3,6 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { Button, Card, CardContent, Grid, Typography } from '@mui/material';
 
-import { ProductContext } from '../../context/ProductContext';
-
 
 const Product = ({ product }) => {
 
@@ -14,6 +12,7 @@ const Product = ({ product }) => {
     //     const filteredProducts = products.filter((product) => product.productID !== productID);
     //     setProducts(filteredProducts);
     // };
+    /* <button onClick={handleDeleteProduct}>Delete</button> */
 
     return (
        
@@ -25,7 +24,7 @@ const Product = ({ product }) => {
                         <Typography>Price = {product.price}$</Typography>
                         <Typography>{product.description}</Typography>
                         <Button>
-                        {<Link to={`products/${product.productID}`}>Show details</Link> /* <button onClick={handleDeleteProduct}>Delete</button> */}
+                        {<Link to={`products/${product.productID}`}>Show details</Link>}
                         </Button>
                     </CardContent>
                 </Card>
