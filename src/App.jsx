@@ -7,10 +7,12 @@ import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import ErrorPage from './pages/ErrorPage';
 import ProductDetails from './pages/ProductDetails';
-import { ProductProvider } from './context/ProductContext';
-import SingUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Cart from './components/cart/cart';
+import { ProductProvider } from './context/ProductProvider';
+import { CartProvider } from './context/CartProvider';
+
 
 const App = () => {
 
@@ -24,6 +26,10 @@ const App = () => {
           path: "/",
           element: <Home />
           
+        },
+        {
+          path: '/cart',
+          element: <Cart />,
         },
         {
           path: "/about",
@@ -56,7 +62,9 @@ const App = () => {
 
   return (
       <ProductProvider>
+        <CartProvider>
         <RouterProvider router={router} />
+        </CartProvider>
       </ProductProvider>
   )
 }

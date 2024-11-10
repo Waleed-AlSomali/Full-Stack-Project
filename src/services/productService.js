@@ -2,21 +2,32 @@ import axios from 'axios';
 
 const baseURL = 'https://sda-3-onsite-waleed-alsomali.onrender.com/api/v2/products';
 
+
 export const getAllProducts = async (
-    PageNumber = 1,
-    PageSize = 4,
-    SortBy = 'title',
-    SortOrder = 'asc',
-    Search = ''
+    pageNumber = 1,
+    pageSize = 4,
+    sortBy = 'title_asc',
+    search = ''
 ) => {
-    const res = await axios(`${baseURL}?PageNumber=${PageNumber}&PageSize=${PageSize}&SortBy=${SortBy}&SortOrder=${SortOrder}&Search=${Search}`);
-    console.log(res.data.data.items);
-    return res.data.data;
+
+    const params = new URLSearchParams();
+
+    params.append('pageNumber', pageNumber);
+    params.append('pageSize', pageSize);
+
+    if (search) {
+        params.append('search', search);
+    }
+
+    if (sortBy) {
+        params.append('sortBy', sortBy);
+    }
+    const response = await axios.get(`${baseURL}?${params.toString()}`);
+    console.log(response.data.data)
+    return response.data.data;
 };
 
 export const getSingleProduct = async (id) => {
     const res = await axios(`${baseURL}/${id}`);
     return res.data.data;
 };
-
-// PageNumber=1&PageSize=4&SortBy=title&SortOrder=asc&Search=

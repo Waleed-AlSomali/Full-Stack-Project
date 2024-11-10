@@ -67,6 +67,17 @@ const Navbar = () => {
         >
           SignIn
         </Button>
+        <Button
+          color="inherit"
+          component={Link}
+          to="/cart"
+          sx={{
+            '&:hover': { backgroundColor: '#7B4F96' },
+            '&:focus': { outline: '2px solid #FFEB3B' },
+          }}
+        >
+          Cart
+        </Button>
       </Toolbar>
     </AppBar>
   )

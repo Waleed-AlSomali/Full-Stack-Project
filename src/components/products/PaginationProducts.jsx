@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
-import { ProductContext } from '../../context/ProductContext'
+import React from 'react'
 import { Box, Pagination } from '@mui/material';
 
+import useProduct from '../hooks/useProduct';
+
 const PaginationProducts = () => {
-    const { pageNumber, setPageNumber, totalPages } = useContext(ProductContext);
+    const { pageNumber, setPageNumber, totalPages } = useProduct();
 
     const handlePageChange = (page) => {
         console.log(page);

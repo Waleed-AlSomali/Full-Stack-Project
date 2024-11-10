@@ -1,13 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types';
 import { Grid2, Typography } from '@mui/material';
 
 import Product from './Product';
-import { ProductContext } from '../../context/ProductContext';
+import useProduct from '../hooks/useProduct';
 
 
 const Products = () => {
-  const { products, isLoading, error } = useContext(ProductContext);
+  const { products, isLoading, error } = useProduct();
 
 
   if (isLoading) {

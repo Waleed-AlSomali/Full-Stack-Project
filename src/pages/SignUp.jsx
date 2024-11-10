@@ -1,10 +1,42 @@
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
-import React from 'react'
+import React, { useState } from 'react'
+import { signUp } from '../services/userService';
+
 
 const SignUp = () => {
+    // to store data in form input, create useState() to store data
+    const [signupData, setSignupData] = useState({
+        name: "",
+        email: "",
+        password: ""
+    })
+    // onChange to get value from input , handleChange to set input value to state
+    const handleChange = (e) => {
+        // const value = e.target.value 
+        // const {value} = e.target
+        // const name = e.target.name 
+        // const {name} = e.target
+        const { name, value } = e.target;
+        setSignupData({
+            ...signupData,
+            [name]: value
 
-    
-
+        })
+    }
+    console.log("signupData ", signupData)
+    // when user clicks handlesubmit => trigger method userService.signUp(signupData) 
+    // do we need to send any data ? send signupData
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        // trigger method userService.signUp(signupData) 
+        // check from the backend, whether signup successfully, return userData 
+        try {
+            const response = await signUp(signupData)
+            console.log("response data from signup ", response)
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
     return (
         <Container
             component="main"
@@ -28,6 +60,7 @@ const SignUp = () => {
                     flexDirection: "column",
                     width: "100%",
                 }}
+                onSubmit={handleSubmit}
             >
                 <TextField
                     label="Name"
@@ -35,10 +68,11 @@ const SignUp = () => {
                     fullWidth
                     required
                     name="name"
+                    onChange={handleChange}
                     sx={{
                         marginBottom: "1rem",
                         '& .MuiInputLabel-root': {
-                            color: '#512D6D', 
+                            color: '#512D6D',
                         },
                         '& .MuiOutlinedInput-root': {
                             '& fieldset': {
@@ -57,6 +91,7 @@ const SignUp = () => {
                     required
                     name="email"
                     type="email"
+                    onChange={handleChange}
                     sx={{
                         marginBottom: "1rem",
                         '& .MuiInputLabel-root': {
@@ -67,7 +102,7 @@ const SignUp = () => {
                                 borderColor: '#512D6D',
                             },
                             '&:hover fieldset': {
-                                borderColor: '#7B4F96', 
+                                borderColor: '#7B4F96',
                             },
                         },
                     }}
@@ -79,6 +114,7 @@ const SignUp = () => {
                     required
                     name="password"
                     type="password"
+                    onChange={handleChange}
                     sx={{
                         marginBottom: "1.5rem",
                         '& .MuiInputLabel-root': {
@@ -86,7 +122,7 @@ const SignUp = () => {
                         },
                         '& .MuiOutlinedInput-root': {
                             '& fieldset': {
-                                borderColor: '#512D6D', 
+                                borderColor: '#512D6D',
                             },
                             '&:hover fieldset': {
                                 borderColor: '#7B4F96',
@@ -102,7 +138,7 @@ const SignUp = () => {
                     sx={{
                         padding: "10px",
                         fontSize: "16px",
-                        backgroundColor: '#512D6D', 
+                        backgroundColor: '#512D6D',
                         '&:hover': {
                             backgroundColor: '#7B4F96',
                         },

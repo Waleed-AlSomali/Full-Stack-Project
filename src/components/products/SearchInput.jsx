@@ -1,10 +1,10 @@
-import { Button, TextField } from '@mui/material'
-import React, { useContext } from 'react'
+import { TextField } from '@mui/material'
+import React  from 'react'
 
-import { ProductContext } from '../../context/ProductContext';
+import useProduct from '../hooks/useProduct';
 
 const SearchInput = () => {
-    const { setSearchField } = useContext(ProductContext);
+    const { setSearchField } = useProduct();
 
     const handleSearchChange = (event) => {
         console.log(event.target.value)
