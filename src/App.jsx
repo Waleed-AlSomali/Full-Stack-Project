@@ -12,6 +12,7 @@ import SignUp from './pages/SignUp';
 import Cart from './components/cart/cart';
 import { ProductProvider } from './context/ProductProvider';
 import { CartProvider } from './context/CartProvider';
+import { UserProvider } from './context/UserProvider';
 
 
 const App = () => {
@@ -25,7 +26,7 @@ const App = () => {
         {
           path: "/",
           element: <Home />
-          
+
         },
         {
           path: '/cart',
@@ -34,38 +35,40 @@ const App = () => {
         {
           path: "/about",
           element: <About />
-          
+
         },
         {
           path: "/contact",
           element: <Contact />
-          
+
         },
         {
           path: "/products/:id",
           element: <ProductDetails />
-          
+
         },
         {
           path: "/signup",
           element: <SignUp />
-          
+
         },
         {
           path: "/signin",
           element: <SignIn />
-          
+
         },
-      ]  
+      ]
     },
   ]);
 
   return (
+    <UserProvider>
       <ProductProvider>
         <CartProvider>
-        <RouterProvider router={router} />
+          <RouterProvider router={router} />
         </CartProvider>
       </ProductProvider>
+    </UserProvider>
   )
 }
 

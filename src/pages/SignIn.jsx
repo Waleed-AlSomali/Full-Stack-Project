@@ -1,17 +1,21 @@
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 // import { useNavigate } from 'react-router-dom';
 import { signIn } from '../services/userService';
+import { UserContext } from '../context/UserContext';
 
 
 
 const SignIn = () => {
 
     // const navigate = useNavigate()
+    const context = useContext(UserContext)
+    console.log(context)
+    const { setUserLoggedIn } = useContext(UserContext);
 
     const [signinData, setSigninData] = useState({
-        email: "AliAlawi@example",
-        password: "456456"
+        email: "",
+        password: ""
     })
 
     const handleChange = (e) => {
@@ -22,7 +26,7 @@ const SignIn = () => {
 
         })
     }
-    //console.log("signinData ", signinData)
+    console.log("signinData ", signinData)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -31,13 +35,11 @@ const SignIn = () => {
         try {
             const response = await signIn(signinData)
             console.log("response data from sign ", response)
+            setUserLoggedIn(response)
         } catch (error) {
             throw new Error(error);
         }
     }
-
-
-
 
     return (
         <Container maxWidth="xs">
@@ -54,7 +56,6 @@ const SignIn = () => {
                 <Typography variant="h2" gutterBottom sx={{ color: '#512D6D' }}>
                     User Sign-in
                 </Typography>
-
 
                 <TextField
                     label="Email"

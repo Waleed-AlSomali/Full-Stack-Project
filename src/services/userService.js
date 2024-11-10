@@ -19,19 +19,19 @@ export const signUp = async (signupData) => {
 
 export const signIn = async (signinData) => {
 
-  //  console.log("data signin ", signinData)
+    //  console.log("data signin ", signinData)
     const response = await axios.post(`${baseURL}/login`, signinData, {
         headers: {
             'Content-Type': 'application/json'
         }
     })
-    
+    console.log("response from signin ", response)
     const token = response.data.token;
     const userRole = jwtDecode(token)
     localStorage.setItem("token", token)
     console.log(userRole)
     localStorage.setItem("user", userRole.role)
 
-    return response.data;
+    return userRole;
 
 }
