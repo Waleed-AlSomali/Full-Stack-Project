@@ -1,45 +1,43 @@
+import { Button, Card, CardContent, Grid, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react'
-import { Link } from 'react-router-dom';
-import { Button, Card, CardContent, Grid, Typography } from '@mui/material';
-import useCart from '../hooks/useCart';
 
+import useProduct from '../hooks/useProduct';
 
-const Product = ({ product }) => {
+const AdminSingleManageProduct = ({ product }) => {
 
-    const { addToCart } = useCart();
+    const { removeProduct } = useProduct();
+
+    const handleDelete = () => {
+        
+    }
+
 
     return (
-
         <Grid item xs={12} sm={6} md={4} >
             <Card>
-                <CardContent >
+                <CardContent>
                     <Typography variant='h5'> {product.title}</Typography>
                     <Typography>Quantity = {product.quantity}</Typography>
                     <Typography>Price = {product.price}$</Typography>
                     <Typography>{product.description}</Typography>
-                    <Button
-                        fullWidth
-                        sx={{ marginTop: '16px' }}>
-                        {<Link to={`products/${product.productID}`}>Show details</Link>}
-                    </Button>
                     <Button
 
                         variant="contained"
                         color="secondary"
                         fullWidth
                         sx={{ marginTop: '16px' }}
-                        onClick={() => addToCart(product)}
+                        onClick={() => handleDelete(product.productID)}
                     >
-                        Add To Cart
+                        Delete
                     </Button>
                 </CardContent>
             </Card>
         </Grid>
-    );
-};
+    )
+}
 
-Product.prototype = {
+AdminSingleManageProduct.prototype = {
     product: PropTypes.shape({
         id: PropTypes.string,
         title: PropTypes.string,
@@ -49,4 +47,4 @@ Product.prototype = {
     }),
 };
 
-export default Product;
+export default AdminSingleManageProduct

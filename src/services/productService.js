@@ -31,3 +31,13 @@ export const getSingleProduct = async (id) => {
     const res = await axios(`${baseURL}/${id}`);
     return res.data.data;
 };
+
+export const deleteProduct = async (id) => {
+    const res = await axios.delete(`${baseURL}/${id}`);
+    console.log(res.data.data);
+};
+
+export const updateProduct = async (id) => {
+    const res = await axios.put(`${baseURL}/${id}`);
+    return res.data.data;
+};

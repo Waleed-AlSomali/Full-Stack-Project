@@ -48,6 +48,17 @@ const Navbar = () => {
         <Button
           color="inherit"
           component={Link}
+          to="/dashboard/admin"
+          sx={{
+            '&:hover': { backgroundColor: '#7B4F96' },
+            '&:focus': { outline: '2px solid #FFEB3B' },
+          }}
+        >
+          Admin Dashboard
+        </Button>
+        <Button
+          color="inherit"
+          component={Link}
           to="/signup"
           sx={{
             '&:hover': { backgroundColor: '#7B4F96' },

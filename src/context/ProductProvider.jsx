@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import { getAllProducts } from "../services/productService";
+import { deleteProduct, getAllProducts } from "../services/productService";
 import { ProductContext } from './ProductContext';
 
 export const ProductProvider = ({ children }) => {
@@ -26,13 +26,17 @@ export const ProductProvider = ({ children }) => {
                 searchField
             );
             setProducts(allProducts.items);
-            // console.log(allProducts.items);
             setTotalPages(allProducts.totalPages);
             setIsLoading(false);
         } catch (error) {
             setError(error);
         }
     };
+
+    const removeProduct = async (productID) => {
+        await deleteProduct(productID);
+        setProducts((prevProduct) => prevProduct.filter((product) => product.productID !== productID)) 
+    }
 
     useEffect(() => {
         fetchProductsData(pageNumber, pageSize, sortBy, searchField);
@@ -42,7 +46,8 @@ export const ProductProvider = ({ children }) => {
         products, isLoading, error, setProducts,
         pageNumber, setPageNumber, pageSize, setPageSize,
         sortBy, setSortBy,
-         totalPages, searchField, setSearchField
+        totalPages, searchField, setSearchField,
+        removeProduct, 
     }}>
         {children}</ProductContext.Provider>
 };

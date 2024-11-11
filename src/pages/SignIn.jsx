@@ -2,16 +2,15 @@ import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import React, { useContext, useState } from 'react'
 // import { useNavigate } from 'react-router-dom';
 import { signIn } from '../services/userService';
-import { UserContext } from '../context/UserContext';
+import useUser from '../components/hooks/useUser';
 
 
 
 const SignIn = () => {
 
     // const navigate = useNavigate()
-    const context = useContext(UserContext)
-    console.log(context)
-    const { setUserLoggedIn } = useContext(UserContext);
+    
+    const { setUserLoggedIn } = useUser();
 
     const [signinData, setSigninData] = useState({
         email: "",
@@ -30,8 +29,6 @@ const SignIn = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // trigger method userService.signUp(signupData) 
-        // check from the backend, whether signup successfully, return userData 
         try {
             const response = await signIn(signinData)
             console.log("response data from sign ", response)
@@ -126,31 +123,3 @@ const SignIn = () => {
     );
 };
 export default SignIn;
-
-
-// console.log("signinData ", signin)
-// const handleSubmit = async (event) => {
-//     event.preventDefault();
-//     try {
-//         const response = await signUp(signupData)
-//         console.log("response data from signup ", response)
-//     } catch (error) {
-//         throw new Error(error);
-//     }
-// }
-
-
-//     const userData = {
-//     };
-
-//     if (user.email === userData.email && user.password === userData.password) {
-//       console.log('user successfully signed in');
-//       localStorage.setItem('login', JSON.stringify({ userData , isLoggedin: true}))
-//       navigate('/profile', {state: userData});
-//     } else {
-//       console.log('failed to sign in');
-//       navigate('/login');
-//     }
-
-
-//   };

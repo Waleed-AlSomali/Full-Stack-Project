@@ -13,6 +13,8 @@ import Cart from './components/cart/cart';
 import { ProductProvider } from './context/ProductProvider';
 import { CartProvider } from './context/CartProvider';
 import { UserProvider } from './context/UserProvider';
+import AdminDashboard from './components/admin/AdminDashboard';
+import AdminMangeProducts from './components/admin/AdminManageProducts';
 
 
 const App = () => {
@@ -46,6 +48,17 @@ const App = () => {
           path: "/products/:id",
           element: <ProductDetails />
 
+        },
+        {
+          path: "/dashboard/admin",
+          element: <AdminDashboard />,
+          children: [
+            {
+              path: "products",
+              element: <AdminMangeProducts />
+    
+            },
+          ],
         },
         {
           path: "/signup",

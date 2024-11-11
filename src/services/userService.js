@@ -27,11 +27,10 @@ export const signIn = async (signinData) => {
     })
     console.log("response from signin ", response)
     const token = response.data.token;
-    const userRole = jwtDecode(token)
+    const decodedUser = jwtDecode(token)
     localStorage.setItem("token", token)
-    console.log(userRole)
-    localStorage.setItem("user", userRole.role)
+    localStorage.setItem("user", JSON.stringify(decodedUser))
 
-    return userRole;
+    return decodedUser;
 
 }
