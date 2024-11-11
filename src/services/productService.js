@@ -32,6 +32,12 @@ export const getSingleProduct = async (id) => {
     return res.data.data;
 };
 
+export const createProduct = async (addProductData) => {
+    const res = await axios.post(`${baseURL}` , addProductData);
+    console.log(res.data.data)
+    return res.data.data;
+};
+
 export const deleteProduct = async (id) => {
     const res = await axios.delete(`${baseURL}/${id}`);
     console.log(res.data.data)
