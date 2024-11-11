@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import React from 'react'
 
 import useProduct from '../hooks/useProduct';
+import { deleteProduct } from '../../services/productService';
 
 const AdminSingleManageProduct = ({ product }) => {
 
     const { removeProduct } = useProduct();
-
-    const handleDelete = () => {
-        
+    const handleDelete = async () => {
+        await removeProduct(product.productID);
     }
 
 
@@ -27,7 +27,7 @@ const AdminSingleManageProduct = ({ product }) => {
                         color="secondary"
                         fullWidth
                         sx={{ marginTop: '16px' }}
-                        onClick={() => handleDelete(product.productID)}
+                        onClick={handleDelete}
                     >
                         Delete
                     </Button>

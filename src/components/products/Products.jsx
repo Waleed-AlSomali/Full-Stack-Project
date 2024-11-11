@@ -22,7 +22,7 @@ const Products = () => {
   }
   return (
     <div>
-      <Grid2 container spacing={3}>
+      <Grid2 container spacing={4}>
         {products.map((product) => (<Product product={product} key={product.productID} />))}
       </Grid2>
     </div>

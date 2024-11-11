@@ -33,21 +33,22 @@ export const ProductProvider = ({ children }) => {
         }
     };
 
-    const removeProduct = async (productID) => {
-        await deleteProduct(productID);
-        setProducts((prevProduct) => prevProduct.filter((product) => product.productID !== productID)) 
-    }
-
     useEffect(() => {
         fetchProductsData(pageNumber, pageSize, sortBy, searchField);
     }, [pageNumber, pageSize, sortBy, searchField]);
+
+    const removeProduct = async (productID) => {
+        await deleteProduct(productID);
+        await getAllProducts();
+    };
+
+    
 
     return <ProductContext.Provider value={{
         products, isLoading, error, setProducts,
         pageNumber, setPageNumber, pageSize, setPageSize,
         sortBy, setSortBy,
-        totalPages, searchField, setSearchField,
-        removeProduct, 
+        totalPages, searchField, setSearchField, removeProduct
     }}>
         {children}</ProductContext.Provider>
 };

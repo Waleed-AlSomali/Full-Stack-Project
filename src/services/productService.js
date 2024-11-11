@@ -34,7 +34,8 @@ export const getSingleProduct = async (id) => {
 
 export const deleteProduct = async (id) => {
     const res = await axios.delete(`${baseURL}/${id}`);
-    console.log(res.data.data);
+    console.log(res.data.data)
+    return res.data.data  
 };
 
 export const updateProduct = async (id) => {
