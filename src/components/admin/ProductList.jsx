@@ -1,11 +1,10 @@
 import React from 'react'
 import { Box, Container, Grid2 } from '@mui/material';
 import { Typography } from '@mui/material';
-
+import PropTypes from 'prop-types';
 
 import useProduct from '../hooks/useProduct'
 import AdminManageSingleProduct from './AdminManageSingleProduct';
-import PropTypes from 'prop-types';
 import PaginationProducts from '../products/PaginationProducts';
 
 const ProductList = () => {

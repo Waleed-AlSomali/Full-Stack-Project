@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 import React from 'react'
 
 import useProduct from '../hooks/useProduct';
+import { getAllProducts } from '../../services/productService';
 
 const AdminManageSingleProduct = ({ product }) => {
 
     const { removeProduct } = useProduct();
     const handleDelete = async () => {
         await removeProduct(product.productID);
+        await getAllProducts();
     }
 
+    // const handleEdit = async () => {
+    //     await editProduct(product.productID, productData);
+    // }
 
     return (
         <Grid item xs={12} sm={6} md={4} >
@@ -30,6 +35,16 @@ const AdminManageSingleProduct = ({ product }) => {
                     >
                         Delete
                     </Button>
+                    {/* <Button
+
+                        variant="contained"
+                        color="secondary"
+                        fullWidth
+                        sx={{ marginTop: '16px' }}
+                        onClick={handleEdit}
+                    >
+                        Edit
+                    </Button> */}
                 </CardContent>
             </Card>
         </Grid>

@@ -5,35 +5,44 @@ import { createProduct } from '../../services/productService';
 
 const AdminMangeProducts = () => {
 
-  const [ProductData, setProductData] = useState({
+  const [productData, setProductData] = useState({
     title: "",
     quantity: "0",
     price: "0",
     description: "",
     categoryId: ""
-});
+  });
+
+  // const [updatedProductData, setUpdatedProductData] = useState({
+  //   title: `${productData.title}`,
+  //   quantity: `${productData.quantity}`,
+  //   price: `${productData.price}`,
+  //   description: `${productData.description}`,
+  //   categoryId: `${productData.categoryId}`
+  // });
 
 
-const handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setProductData({
-        ...ProductData,
-        [name]: value
+      ...productData,
+      [name]: value
 
     })
-};
+  };
 
-console.log("ProductData ", ProductData)
+  console.log("productData", productData)
 
-const handleSubmit = async (event) => {
-  event.preventDefault(); 
-  try {
-      const response = await createProduct (ProductData)
-      console.log("response data from addProductDataForm ", response)
-  } catch (error) {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await createProduct(productData)
+      console.log("response data from ProductDataForm ", response)
+
+    } catch (error) {
       throw new Error(error);
-  }
-};
+    }
+  };
 
   return (
 
@@ -48,7 +57,7 @@ const handleSubmit = async (event) => {
             alignItems: 'center',
             mt: 4,
           }}
-        onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
         >
           <Typography variant="h2" gutterBottom sx={{ color: '#512D6D' }}>
             Create Product Form
@@ -152,7 +161,7 @@ const handleSubmit = async (event) => {
             select
             fullWidth
             required
-            value={ProductData.categoryId}
+            value={productData.categoryId}
             onChange={handleChange}
             sx={{
               marginBottom: "1rem",
@@ -190,6 +199,22 @@ const handleSubmit = async (event) => {
           >
             Add Product
           </Button>
+          {/* <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{
+              padding: "10px",
+              fontSize: "16px",
+              backgroundColor: '#512D6D',
+              '&:hover': {
+                backgroundColor: '#7B4F96',
+              },
+            }}
+          >
+            Edit Product
+          </Button> */}
         </Box>
       </Container>
       <ProductList />

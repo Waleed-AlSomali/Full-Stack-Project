@@ -32,8 +32,14 @@ export const getSingleProduct = async (id) => {
     return res.data.data;
 };
 
-export const createProduct = async (ProductData) => {
-    const res = await axios.post(`${baseURL}` , ProductData);
+export const createProduct = async (productData) => {
+    const res = await axios.post(`${baseURL}` , productData);
+    console.log(res.data.data)
+    return res.data.data;
+};
+
+export const updateProduct = async (id, productData) => {
+    const res = await axios.put(`${baseURL}/${id}` , productData);
     console.log(res.data.data)
     return res.data.data;
 };
@@ -42,9 +48,4 @@ export const deleteProduct = async (id) => {
     const res = await axios.delete(`${baseURL}/${id}`);
     console.log(res.data.data)
     return res.data.data  
-};
-
-export const updateProduct = async (id) => {
-    const res = await axios.put(`${baseURL}/${id}`);
-    return res.data.data;
 };
