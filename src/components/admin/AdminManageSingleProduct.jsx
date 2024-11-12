@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import React from 'react'
 
 import useProduct from '../hooks/useProduct';
-import { deleteProduct } from '../../services/productService';
 
-const AdminSingleManageProduct = ({ product }) => {
+const AdminManageSingleProduct = ({ product }) => {
 
     const { removeProduct } = useProduct();
     const handleDelete = async () => {
@@ -37,7 +36,7 @@ const AdminSingleManageProduct = ({ product }) => {
     )
 }
 
-AdminSingleManageProduct.prototype = {
+AdminManageSingleProduct.prototype = {
     product: PropTypes.shape({
         id: PropTypes.string,
         title: PropTypes.string,
@@ -47,4 +46,4 @@ AdminSingleManageProduct.prototype = {
     }),
 };
 
-export default AdminSingleManageProduct
+export default AdminManageSingleProduct;

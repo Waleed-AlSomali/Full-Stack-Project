@@ -9,7 +9,7 @@ const AdminDashboard = () => {
     <Box display="flex">
       <AdminSidebar />
       <Container>
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h4" gutterBottom  >
           Admin Dashboard
         </Typography>
         <Box sx={{ mt: 4 }}>

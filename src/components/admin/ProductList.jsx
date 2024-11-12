@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 
 
 import useProduct from '../hooks/useProduct'
-import AdminSingleManageProduct from './AdminSingleManageProduct';
+import AdminManageSingleProduct from './AdminManageSingleProduct';
 import PropTypes from 'prop-types';
 import PaginationProducts from '../products/PaginationProducts';
 
@@ -26,7 +26,7 @@ const ProductList = () => {
 
             <Container>
                 <Grid2 container spacing={3}>
-                    {products.map((product) => (<AdminSingleManageProduct product={product} key={product.productID} />))}
+                    {products.map((product) => (<AdminManageSingleProduct product={product} key={product.productID} />))}
                 </Grid2>
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
                     <PaginationProducts />

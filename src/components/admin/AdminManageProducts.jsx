@@ -5,7 +5,7 @@ import { createProduct } from '../../services/productService';
 
 const AdminMangeProducts = () => {
 
-  const [addProductData, setAddProductData] = useState({
+  const [ProductData, setProductData] = useState({
     title: "",
     quantity: "0",
     price: "0",
@@ -16,19 +16,19 @@ const AdminMangeProducts = () => {
 
 const handleChange = (e) => {
     const { name, value } = e.target;
-    setAddProductData({
-        ...addProductData,
+    setProductData({
+        ...ProductData,
         [name]: value
 
     })
 };
 
-console.log("ProductData ", addProductData)
+console.log("ProductData ", ProductData)
 
 const handleSubmit = async (event) => {
   event.preventDefault(); 
   try {
-      const response = await createProduct (addProductData)
+      const response = await createProduct (ProductData)
       console.log("response data from addProductDataForm ", response)
   } catch (error) {
       throw new Error(error);
@@ -152,7 +152,7 @@ const handleSubmit = async (event) => {
             select
             fullWidth
             required
-            // value={formData.categoryId}
+            value={ProductData.categoryId}
             onChange={handleChange}
             sx={{
               marginBottom: "1rem",

@@ -9,7 +9,7 @@ const Cart = () => {
     const [address, setAddress] = useState('');
     const [addressEditing, setAddressEditing] = useState(false);
 
-    
+
     const totalPrice = cart.reduce(
         (total, item) => total + item.price * item.quantity,
         0
@@ -42,10 +42,10 @@ const Cart = () => {
                                 flexDirection: 'column',
                                 justifyContent: 'space-between',
                                 paddingLeft: 2,
-                            }}
+                            }}  
                         >
                             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                                {item.name}
+                                {item.title}
                             </Typography>
                             <Typography variant="body2">
                                 Price: ${item.price.toFixed(2)}
@@ -55,7 +55,7 @@ const Cart = () => {
                                 <Button
                                     variant="contained"
                                     color="error"
-                                    onClick={() => removeFromCart(item.productId)}
+                                    onClick={() => removeFromCart(item.productID)}
                                     sx={{ marginTop: 1 }}
                                 >
                                     Remove

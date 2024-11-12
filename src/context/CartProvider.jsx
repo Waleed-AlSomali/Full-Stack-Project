@@ -18,12 +18,12 @@ export const CartProvider = ({ children }) => {
   const addToCart = (product) => {
     setCart((prevCart) => {
       const existingProductIndex = prevCart.findIndex(
-        (item) => item.productId === product.productId
+        (item) => item.productID === product.productID
       );
       let updatedCart;
 
       if (existingProductIndex >= 0) {
-        
+
         updatedCart = [...prevCart];
         updatedCart[existingProductIndex].quantity += 1;
       } else {
@@ -35,10 +35,10 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const removeFromCart = (productId) => {
+  const removeFromCart = (productID) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.filter(
-        (item) => item.productId !== productId
+        (item) => item.productID !== productID
       );
       saveCartToLocalStorage(updatedCart);
       return updatedCart;

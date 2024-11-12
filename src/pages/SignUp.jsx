@@ -8,7 +8,8 @@ const SignUp = () => {
     const [signupData, setSignupData] = useState({
         name: "",
         email: "",
-        password: ""
+        password: "",
+        confirmPassword: ""
     })
     // onChange to get value from input , handleChange to set input value to state
     const handleChange = (e) => {
@@ -31,8 +32,10 @@ const SignUp = () => {
         // trigger method userService.signUp(signupData) 
         // check from the backend, whether signup successfully, return userData 
         try {
+            if(signupData.confirmPassword === signupData.password){
             const response = await signUp(signupData)
             console.log("response data from signup ", response)
+            }
         } catch (error) {
             throw new Error(error);
         }
@@ -130,7 +133,29 @@ const SignUp = () => {
                         },
                     }}
                 />
-
+                <TextField
+                    label="ConfirmPassword"
+                    variant="outlined"
+                    fullWidth
+                    required
+                    name="confirmPassword"
+                    type="password"
+                    onChange={handleChange}
+                    sx={{
+                        marginBottom: "1.5rem",
+                        '& .MuiInputLabel-root': {
+                            color: '#512D6D',
+                        },
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: '#512D6D',
+                            },
+                            '&:hover fieldset': {
+                                borderColor: '#7B4F96',
+                            },
+                        },
+                    }}
+                />
                 <Button
                     type="submit"
                     variant="contained"

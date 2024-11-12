@@ -32,8 +32,8 @@ export const getSingleProduct = async (id) => {
     return res.data.data;
 };
 
-export const createProduct = async (addProductData) => {
-    const res = await axios.post(`${baseURL}` , addProductData);
+export const createProduct = async (ProductData) => {
+    const res = await axios.post(`${baseURL}` , ProductData);
     console.log(res.data.data)
     return res.data.data;
 };
