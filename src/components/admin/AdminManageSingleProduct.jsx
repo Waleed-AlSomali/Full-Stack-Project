@@ -1,21 +1,24 @@
-import { Button, Card, CardContent, Grid, Typography } from '@mui/material';
+import { Button, Card, CardContent, Grid, Link, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react'
 
 import useProduct from '../hooks/useProduct';
 import { getAllProducts } from '../../services/productService';
+import { useNavigate } from 'react-router-dom';
 
 const AdminManageSingleProduct = ({ product }) => {
 
-    const { removeProduct } = useProduct();
+    const { removeProduct, editProduct } = useProduct();
+    const navigate = useNavigate();
     const handleDelete = async () => {
         await removeProduct(product.productID);
         await getAllProducts();
     }
 
-    // const handleEdit = async () => {
-    //     await editProduct(product.productID, productData);
-    // }
+    const handleEdit = async () => {
+        navigate('/dashboard/admin/products/edit')
+        await editProduct(id, productData);
+    }
 
     return (
         <Grid item xs={12} sm={6} md={4} >
@@ -35,8 +38,7 @@ const AdminManageSingleProduct = ({ product }) => {
                     >
                         Delete
                     </Button>
-                    {/* <Button
-
+                    <Button
                         variant="contained"
                         color="secondary"
                         fullWidth
@@ -44,7 +46,7 @@ const AdminManageSingleProduct = ({ product }) => {
                         onClick={handleEdit}
                     >
                         Edit
-                    </Button> */}
+                    </Button>
                 </CardContent>
             </Card>
         </Grid>

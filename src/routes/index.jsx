@@ -10,7 +10,9 @@ import ProductDetails from '../pages/ProductDetails';
 import AdminDashboard from '../components/admin/AdminDashboard';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
-import AdminMangeProducts from '../components/admin/AdminManageProducts';
+import AdminEditProductForm from '../components/admin/AdminEditProductForm';
+import AdminManageProducts from '../components/admin/AdminManageProducts';
+import AdminCreateProduct from '../components/admin/AdminCreateProduct';
 
 
 
@@ -52,7 +54,17 @@ const Routes = () => {
               children: [
                 {
                   path: "products",
-                  element: <AdminMangeProducts />
+                  element: <AdminManageProducts />
+        
+                },
+                {
+                  path: "products/create",
+                  element: <AdminCreateProduct />
+        
+                },
+                {
+                  path: "products/edit",
+                  element: <AdminEditProductForm />
         
                 },
               ],
