@@ -8,7 +8,7 @@ const Navbar = () => {
       <Toolbar>
         <Typography variant="h5" sx={{ flexGrow: 1 }}>
           <Button color="inherit" component={Link} to="/" sx={{ textDecoration: 'none' }}>
-            <Typography variant="h6" color="inherit">My Store</Typography>
+            <Typography variant="h6" color="inherit">your favorite shopping Cart</Typography>
           </Button>
         </Typography>
 

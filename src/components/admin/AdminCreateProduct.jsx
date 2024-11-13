@@ -1,12 +1,10 @@
 import { Box, Button, Container, MenuItem, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 
 import { createProduct, getAllProducts } from '../../services/productService';
 
 
 const AdminCreateProduct = () => {
-    const navigate = useNavigate();
     const [productData, setProductData] = useState({
         title: "",
         quantity: "0",
@@ -31,7 +29,6 @@ const AdminCreateProduct = () => {
         try {
           const response = await createProduct(productData)
           console.log("response data from ProductDataForm ", response)
-          navigate('/dashboard/admin/products')
           await getAllProducts();
         } catch (error) {
           throw new Error(error);

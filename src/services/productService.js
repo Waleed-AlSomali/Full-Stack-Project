@@ -22,7 +22,7 @@ export const getAllProducts = async (
     if (sortBy) {
         params.append('sortBy', sortBy);
     }
-    const response = await axios.get(`${baseURL}?${params.toString()}`);
+    const response = await axios(`${baseURL}?${params.toString()}`);
     console.log(response.data.data)
     return response.data.data;
 };
