@@ -15,7 +15,6 @@ const SortProducts = () => {
         <InputLabel id="sort-label">Sort By</InputLabel>
         <Select
           labelId="sort-label"
-          // value= {`SortBy=${sortBy}&SortOrder=${sortOrder}`}
           value={sortBy}
           label="Sort By"
           onChange={handleSortChange}

@@ -42,7 +42,7 @@ const Cart = () => {
                                 flexDirection: 'column',
                                 justifyContent: 'space-between',
                                 paddingLeft: 2,
-                            }}  
+                            }}
                         >
                             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
                                 {item.title}

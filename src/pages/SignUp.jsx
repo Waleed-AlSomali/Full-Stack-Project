@@ -4,19 +4,16 @@ import { signUp } from '../services/userService';
 
 
 const SignUp = () => {
-    // to store data in form input, create useState() to store data
+
     const [signupData, setSignupData] = useState({
         name: "",
         email: "",
         password: "",
         confirmPassword: ""
     })
-    // onChange to get value from input , handleChange to set input value to state
+
     const handleChange = (e) => {
-        // const value = e.target.value 
-        // const {value} = e.target
-        // const name = e.target.name 
-        // const {name} = e.target
+
         const { name, value } = e.target;
         setSignupData({
             ...signupData,
@@ -24,17 +21,12 @@ const SignUp = () => {
 
         })
     }
-    console.log("signupData ", signupData)
-    // when user clicks handlesubmit => trigger method userService.signUp(signupData) 
-    // do we need to send any data ? send signupData
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // trigger method userService.signUp(signupData) 
-        // check from the backend, whether signup successfully, return userData 
         try {
-            if(signupData.confirmPassword === signupData.password){
-            const response = await signUp(signupData)
-            console.log("response data from signup ", response)
+            if (signupData.confirmPassword === signupData.password) {
+                const response = await signUp(signupData)
             }
         } catch (error) {
             throw new Error(error);

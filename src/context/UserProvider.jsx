@@ -11,7 +11,6 @@ export const UserProvider = ({ children }) => {
     useEffect(() => {
         const userLocalStorage = localStorage.getItem("user") || null
         if (userLocalStorage) {
-            // data saved in local storage will be string object, if you get data from local storage : JSON.parse() into object
             setUserLoggedIn(JSON.parse(userLocalStorage))
         }
     }, [])

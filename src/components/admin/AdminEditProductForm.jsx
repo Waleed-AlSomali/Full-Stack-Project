@@ -6,9 +6,9 @@ import { getAllProducts, getSingleProduct, updateProduct } from '../../services/
 
 const AdminEditProductForm = () => {
     const { id } = useParams();
-    // store data that client wants to update
+
     const [selectedData, setSelectedData] = useState(null)
-    // based on id of product, get the product detail , and set data to selectedData
+
     const fetchProductData = async (id) => {
         const singleProductData = await getSingleProduct(id);
         console.log(singleProductData);
@@ -19,7 +19,6 @@ const AdminEditProductForm = () => {
         fetchProductData(id);
     }, [id])
 
-    // handle input for updating data
     const handleChange = (e) => {
         const { name, value } = e.target;
         setSelectedData({
@@ -29,12 +28,10 @@ const AdminEditProductForm = () => {
         })
     };
 
-    // send request to server to update
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             const response = await updateProduct(selectedData)
-            console.log("response data from UpdatedProductDataForm ", response)
             const data = await getAllProducts();
         } catch (error) {
             throw new Error(error);

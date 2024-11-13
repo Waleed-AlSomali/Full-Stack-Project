@@ -1,6 +1,6 @@
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import React, { useContext, useState } from 'react'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { signIn } from '../services/userService';
 import useUser from '../components/hooks/useUser';
 
@@ -8,8 +8,8 @@ import useUser from '../components/hooks/useUser';
 
 const SignIn = () => {
 
-    // const navigate = useNavigate()
-    
+    const navigate = useNavigate()
+
     const { setUserLoggedIn } = useUser();
 
     const [signinData, setSigninData] = useState({
@@ -25,14 +25,13 @@ const SignIn = () => {
 
         })
     }
-    console.log("signinData ", signinData)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             const response = await signIn(signinData)
-            console.log("response data from sign ", response)
             setUserLoggedIn(response)
+            navigate('/')
         } catch (error) {
             throw new Error(error);
         }

@@ -33,13 +33,13 @@ export const getSingleProduct = async (id) => {
 };
 
 export const createProduct = async (productData) => {
-    const res = await axios.post(`${baseURL}` , productData);
+    const res = await axios.post(`${baseURL}`, productData);
     console.log(res.data.data)
     return res.data.data;
 };
 
 export const updateProduct = async (id, productData) => {
-    const res = await axios.put(`${baseURL}/${id}` , productData);
+    const res = await axios.put(`${baseURL}/${id}`, productData);
     console.log(res.data.data)
     return res.data.data;
 };
@@ -47,5 +47,5 @@ export const updateProduct = async (id, productData) => {
 export const deleteProduct = async (id) => {
     const res = await axios.delete(`${baseURL}/${id}`);
     console.log(res.data.data)
-    return res.data.data  
+    return res.data.data
 };

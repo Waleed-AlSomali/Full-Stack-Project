@@ -34,15 +34,15 @@ const ProductDetails = () => {
               <Typography variant='h4'>Price = {product.price}$</Typography>
               <Typography variant='h4'>{product.description}</Typography>
               <Button
-            variant="contained"
-            color="secondary"
-            fullWidth
-            sx={{ marginTop: '16px' }} 
-            onClick={() => addToCart(product)}
-            disabled={isInCart}
-          >
-            {isInCart ? 'Already in Cart' : 'Add To Cart'}
-          </Button>
+                variant="contained"
+                color="secondary"
+                fullWidth
+                sx={{ marginTop: '16px' }}
+                onClick={() => addToCart(product)}
+                disabled={isInCart}
+              >
+                {isInCart ? 'Already in Cart' : 'Add To Cart'}
+              </Button>
             </CardContent>
           </Card>
         </Container>)}
@@ -52,11 +52,3 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
-
-// const {id} =  useParams()
-// const id =  useParams().id
-
-// id of product detail
-// use api from backend to call api to get product
-//id: 1231232121
-// `locahost:8080/api/products/${id}`

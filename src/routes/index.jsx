@@ -18,77 +18,77 @@ import AdminCreateProduct from '../components/admin/AdminCreateProduct';
 
 const Routes = () => {
 
-    const router = createBrowserRouter([
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      errorElement: <ErrorPage />,
+      children: [
         {
           path: "/",
-          element: <Layout />,
-          errorElement: <ErrorPage />,
+          element: <Home />
+
+        },
+        {
+          path: '/cart',
+          element: <Cart />,
+        },
+        {
+          path: "/about",
+          element: <About />
+
+        },
+        {
+          path: "/contact",
+          element: <Contact />
+
+        },
+        {
+          path: "/products/:id",
+          element: <ProductDetails />
+
+        },
+        {
+          path: "/dashboard/admin",
+          element: <AdminDashboard />,
           children: [
             {
-              path: "/",
-              element: <Home />
-    
-            },
-            {
-              path: '/cart',
-              element: <Cart />,
-            },
-            {
-              path: "/about",
-              element: <About />
-    
-            },
-            {
-              path: "/contact",
-              element: <Contact />
-    
-            },
-            {
-              path: "/products/:id",
-              element: <ProductDetails />
-    
-            },
-            {
-              path: "/dashboard/admin",
-              element: <AdminDashboard />,
-              children: [
-                {
-                  path: "products",
-                  element: <AdminManageProducts />
-        
-                },
-                {
-                  path: "products/create",
-                  element: <AdminCreateProduct />
-        
-                },
-                {
-                  path: "products/edit",
-                  element: <AdminEditProductForm />
-        
-                },
-                {
-                  path: "products/edit/:id",
-                  element: <AdminEditProductForm />
-        
-                },
-              ],
-            },
-            {
-              path: "/signup",
-              element: <SignUp />
-    
-            },
-            {
-              path: "/signin",
-              element: <SignIn />
-    
-            },
-          ]
-        },
-      ]);
+              path: "products",
+              element: <AdminManageProducts />
 
-      return   <RouterProvider router={router} />
+            },
+            {
+              path: "products/create",
+              element: <AdminCreateProduct />
+
+            },
+            {
+              path: "products/edit",
+              element: <AdminEditProductForm />
+
+            },
+            {
+              path: "products/edit/:id",
+              element: <AdminEditProductForm />
+
+            },
+          ],
+        },
+        {
+          path: "/signup",
+          element: <SignUp />
+
+        },
+        {
+          path: "/signin",
+          element: <SignIn />
+
+        },
+      ]
+    },
+  ]);
+
+  return <RouterProvider router={router} />
 };
 
 export default Routes;
