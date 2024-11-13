@@ -2,57 +2,44 @@ import { Box, Button, Container, MenuItem, TextField, Typography } from '@mui/ma
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-import { getAllProducts, updateProduct } from '../../services/productService';
+import { getAllProducts, getSingleProduct, updateProduct } from '../../services/productService';
 
 const AdminEditProductForm = () => {
-
-    
-
-    const [updatedProductData, setUpdatedProductData] = useState({
-        title: `${productData.title}`,
-        quantity: `${productData.quantity}`,
-        price: `${productData.price}`,
-        description: `${productData.description}`,
-        categoryId: `${productData.categoryId}`
-      });
-     
-      
     const { id } = useParams();
+    // store data that client wants to update
+    const [selectedData, setSelectedData] = useState(null)
+    // based on id of product, get the product detail , and set data to selectedData
+    const fetchProductData = async (id) => {
+        const singleProductData = await getSingleProduct(id);
+        console.log(singleProductData);
+        setSelectedData(singleProductData);
+    };
 
-    // const fetchProductData = async (id) => {
-    //     const singleProductData = await getSingleProduct(id);
-    //     console.log(singleProductData);
-    //     setUpdatedProductData(singleProductData);
-    // };
+    useEffect(() => {
+        fetchProductData(id);
+    }, [id])
 
-    // useEffect(() => {
-    //     fetchProductData(id);
-    // }, [id])
-
+    // handle input for updating data
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setUpdatedProductData({
-          ...updatedProductData,
-          [name]: value
-    
+        setSelectedData({
+            ...selectedData,
+            [name]: value
+
         })
-      };
+    };
 
-      console.log(updatedProductData)
-
-
-      const handleSubmit = async (event) => {
+    // send request to server to update
+    const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          const response = await updateProduct(updatedProductData)
-          console.log("response data from UpdatedProductDataForm ", response)
-          await getAllProducts();
+            const response = await updateProduct(selectedData)
+            console.log("response data from UpdatedProductDataForm ", response)
+            const data = await getAllProducts();
         } catch (error) {
-          throw new Error(error);
+            throw new Error(error);
         }
-      };
-
-
+    };
 
     return (
         <div>
@@ -70,15 +57,16 @@ const AdminEditProductForm = () => {
                     <Typography variant="h2" gutterBottom sx={{ color: '#512D6D' }}>
                         Edit Product Form
                     </Typography>
-
+                    <Typography>
+                        Title
+                    </Typography>
                     <TextField
-                        label="Title"
                         variant="outlined"
                         fullWidth
                         required
                         name="title"
                         type="title"
-                        value={updatedProductData.title}
+                        value={selectedData?.title}
                         onChange={handleChange}
                         sx={{
                             marginBottom: "1rem",
@@ -95,14 +83,16 @@ const AdminEditProductForm = () => {
                             },
                         }}
                     />
+                    <Typography>
+                        Quantity
+                    </Typography>
                     <TextField
-                        label="Quantity"
                         variant="outlined"
                         fullWidth
                         required
                         name="quantity"
                         type="quantity"
-                        value={updatedProductData.quantity}
+                        value={selectedData?.quantity}
                         onChange={handleChange}
                         sx={{
                             marginBottom: "1.5rem",
@@ -119,14 +109,16 @@ const AdminEditProductForm = () => {
                             },
                         }}
                     />
+                    <Typography>
+                        Price
+                    </Typography>
                     <TextField
-                        label="Price"
                         variant="outlined"
                         fullWidth
                         required
                         name="price"
                         type="price"
-                        value={updatedProductData.price}
+                        value={selectedData?.price}
                         onChange={handleChange}
                         sx={{
                             marginBottom: "1rem",
@@ -143,14 +135,16 @@ const AdminEditProductForm = () => {
                             },
                         }}
                     />
+                    <Typography>
+                        Description
+                    </Typography>
                     <TextField
-                        label="Description"
                         variant="outlined"
                         fullWidth
                         required
                         name="description"
                         type="description"
-                        value={updatedProductData.description}
+                        value={selectedData?.description}
                         onChange={handleChange}
                         sx={{
                             marginBottom: "1rem",
@@ -167,13 +161,15 @@ const AdminEditProductForm = () => {
                             },
                         }}
                     />
+                    <Typography>
+                        Category
+                    </Typography>
                     <TextField
-                        label="Category"
                         name="categoryId"
                         select
                         fullWidth
                         required
-                        value={updatedProductData.categoryId}
+                        value={selectedData?.categoryId}
                         onChange={handleChange}
                         sx={{
                             marginBottom: "1rem",

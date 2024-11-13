@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Grid, Link, Typography } from '@mui/material';
+import { Button, Card, CardContent, Grid, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react'
 
@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminManageSingleProduct = ({ product }) => {
 
-    const { removeProduct, editProduct } = useProduct();
+    const { removeProduct } = useProduct();
     const navigate = useNavigate();
     const handleDelete = async () => {
         await removeProduct(product.productID);
@@ -16,40 +16,50 @@ const AdminManageSingleProduct = ({ product }) => {
     }
 
     const handleEdit = async (id) => {
-        navigate(`/dashboard/admin/products/edit/${id}`)
-        await getSingleProduct(id)
+        navigate(`/dashboard/admin/products/edit/${product.productID}`)
+        await getSingleProduct(product.productID)
     }
 
     return (
-        <Grid item xs={12} sm={6} md={4} >
-            <Card>
-                <CardContent>
-                    <Typography variant='h5'> {product.title}</Typography>
-                    <Typography>Quantity = {product.quantity}</Typography>
-                    <Typography>Price = {product.price}$</Typography>
-                    <Typography>{product.description}</Typography>
-                    <Button
-
-                        variant="contained"
-                        color="secondary"
-                        fullWidth
-                        sx={{ marginTop: '16px' }}
-                        onClick={handleDelete}
-                    >
-                        Delete
-                    </Button>
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        fullWidth
-                        sx={{ marginTop: '16px' }}
-                        onClick={handleEdit}
-                    >
-                        Edit
-                    </Button>
-                </CardContent>
-            </Card>
-        </Grid>
+        <TableContainer>
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell><Typography variant="h6">Title</Typography></TableCell>
+                        <TableCell><Typography variant="h6">Quantity</Typography></TableCell>
+                        <TableCell><Typography variant="h6">Price</Typography></TableCell>
+                        <TableCell><Typography variant="h6">Description</Typography></TableCell>
+                        <TableCell><Typography variant="h6">Actions</Typography></TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    <TableRow key={product.productID}>
+                        <TableCell>{product.title}</TableCell>
+                        <TableCell>{product.quantity}</TableCell>
+                        <TableCell>{product.price}$</TableCell>
+                        <TableCell>{product.description}</TableCell>
+                        <TableCell>
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                sx={{ marginBottom: '8px', marginRight: '8px' }}
+                                onClick={() => handleDelete(product.productID)}
+                            >
+                                Delete
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                sx={{ marginBottom: '8px', marginRight: '8px' }}
+                                onClick={() => handleEdit(product.productID)}
+                            >
+                                Edit
+                            </Button>
+                        </TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
+        </TableContainer>
     )
 }
 
