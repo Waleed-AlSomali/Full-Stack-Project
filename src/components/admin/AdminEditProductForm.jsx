@@ -2,30 +2,32 @@ import { Box, Button, Container, MenuItem, TextField, Typography } from '@mui/ma
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-import { getSingleProduct, updateProduct } from '../../services/productService';
+import { getAllProducts, updateProduct } from '../../services/productService';
 
 const AdminEditProductForm = () => {
 
+    
+
     const [updatedProductData, setUpdatedProductData] = useState({
-        title: "",
-        quantity: "0",
-        price: "0",
-        description: "",
-        categoryId: ""
+        title: `${productData.title}`,
+        quantity: `${productData.quantity}`,
+        price: `${productData.price}`,
+        description: `${productData.description}`,
+        categoryId: `${productData.categoryId}`
       });
      
       
     const { id } = useParams();
 
-    const fetchProductData = async (id) => {
-        const singleProductData = await getSingleProduct(id);
-        console.log(singleProductData);
-        setUpdatedProductData(singleProductData);
-    };
+    // const fetchProductData = async (id) => {
+    //     const singleProductData = await getSingleProduct(id);
+    //     console.log(singleProductData);
+    //     setUpdatedProductData(singleProductData);
+    // };
 
-    useEffect(() => {
-        fetchProductData(id);
-    }, [id])
+    // useEffect(() => {
+    //     fetchProductData(id);
+    // }, [id])
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -42,9 +44,9 @@ const AdminEditProductForm = () => {
       const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          const response = await updateProduct(id, updatedProductData)
+          const response = await updateProduct(updatedProductData)
           console.log("response data from UpdatedProductDataForm ", response)
-    
+          await getAllProducts();
         } catch (error) {
           throw new Error(error);
         }
@@ -76,6 +78,7 @@ const AdminEditProductForm = () => {
                         required
                         name="title"
                         type="title"
+                        value={updatedProductData.title}
                         onChange={handleChange}
                         sx={{
                             marginBottom: "1rem",
@@ -99,6 +102,7 @@ const AdminEditProductForm = () => {
                         required
                         name="quantity"
                         type="quantity"
+                        value={updatedProductData.quantity}
                         onChange={handleChange}
                         sx={{
                             marginBottom: "1.5rem",
@@ -122,6 +126,7 @@ const AdminEditProductForm = () => {
                         required
                         name="price"
                         type="price"
+                        value={updatedProductData.price}
                         onChange={handleChange}
                         sx={{
                             marginBottom: "1rem",
@@ -145,6 +150,7 @@ const AdminEditProductForm = () => {
                         required
                         name="description"
                         type="description"
+                        value={updatedProductData.description}
                         onChange={handleChange}
                         sx={{
                             marginBottom: "1rem",

@@ -67,6 +67,11 @@ const Routes = () => {
                   element: <AdminEditProductForm />
         
                 },
+                {
+                  path: "products/edit/:id",
+                  element: <AdminEditProductForm />
+        
+                },
               ],
             },
             {

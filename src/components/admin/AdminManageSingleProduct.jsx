@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react'
 
 import useProduct from '../hooks/useProduct';
-import { getAllProducts } from '../../services/productService';
+import { getAllProducts, getSingleProduct } from '../../services/productService';
 import { useNavigate } from 'react-router-dom';
 
 const AdminManageSingleProduct = ({ product }) => {
@@ -15,9 +15,9 @@ const AdminManageSingleProduct = ({ product }) => {
         await getAllProducts();
     }
 
-    const handleEdit = async () => {
-        navigate('/dashboard/admin/products/edit')
-        await editProduct(id, productData);
+    const handleEdit = async (id) => {
+        navigate(`/dashboard/admin/products/edit/${id}`)
+        await getSingleProduct(id)
     }
 
     return (
