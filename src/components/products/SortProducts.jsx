@@ -24,8 +24,6 @@ const SortProducts = () => {
           <MenuItem value='title_desc'>Title (Z-A)</MenuItem>
           <MenuItem value='price_asc'>Price (Low to High)</MenuItem>
           <MenuItem value='price_desc'>Price (High to Low)</MenuItem>
-          <MenuItem value='date_asc'>Date (Oldest First)</MenuItem>
-          <MenuItem value='date_desc'>Date (Newest First)</MenuItem>
         </Select>
       </FormControl>
     </div>
