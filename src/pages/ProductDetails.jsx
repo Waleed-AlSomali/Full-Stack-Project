@@ -32,8 +32,8 @@ const ProductDetails = () => {
           <CardMedia
             component="img"
             height="400"
-            image={product.imageUrl}
-            alt={title}
+            image={product.imageUrl || 'https://via.placeholder.com/150'}
+            alt={product.title}
           />
         )}
             <CardContent>
