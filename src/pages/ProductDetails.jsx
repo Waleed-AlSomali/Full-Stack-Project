@@ -28,7 +28,7 @@ const ProductDetails = () => {
       {product && (
         <Container maxWidth="md" style={{ marginTop: '20px' }} >
           <Card>
-          {ImageUrl && (
+          {product.ImageUrl && (
           <CardMedia
             component="img"
             height="400"
