@@ -34,6 +34,7 @@ const ProductDetails = () => {
             height="400"
             image={product.imageUrl || 'https://via.placeholder.com/150'}
             alt={product.title}
+            sx={{ objectFit: 'cover' }}
           />
         )}
             <CardContent>
