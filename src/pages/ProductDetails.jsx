@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { Button, Card, CardContent, Container, Typography } from '@mui/material';
+import { Button, Card, CardContent, CardMedia, Container, Typography } from '@mui/material';
 
 import { getSingleProduct } from '../services/productService';
 import useCart from '../components/hooks/useCart';
@@ -26,13 +26,21 @@ const ProductDetails = () => {
   return (
     <div>
       {product && (
-        <Container >
+        <Container maxWidth="md" style={{ marginTop: '20px' }} >
           <Card>
+          {ImageUrl && (
+          <CardMedia
+            component="img"
+            height="400"
+            imageUrl={imageUrl}
+            alt={title}
+          />
+        )}
             <CardContent>
               <Typography variant='h4'>{product.title}</Typography>
-              <Typography variant='h4'>Quantity = {product.quantity}</Typography>
-              <Typography variant='h4'>Price = {product.price}$</Typography>
-              <Typography variant='h4'>{product.description}</Typography>
+              <Typography variant='h6'>Available Quantity = {product.quantity}</Typography>
+              <Typography variant='h6'>Price = {product.price}$</Typography>
+              <Typography variant='h6'>{product.description}</Typography>
               <Button
                 variant="contained"
                 color="secondary"
