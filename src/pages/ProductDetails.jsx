@@ -27,15 +27,18 @@ const ProductDetails = () => {
     <div>
       {product && (
         <Container maxWidth="md" style={{ marginTop: '20px' }} >
+          <Typography variant='h4' gutterBottom>
+            Product Details:
+          </Typography>
           <Card>
-          <CardMedia
-            component="img"
-            height="400"
-            src={product.imageUrl}
-            alt={product.title}
-            sx={{ objectFit: 'cover' }}
-          >
-          </CardMedia>
+            <CardMedia
+              component="img"
+              height="400"
+              src={product.imageUrl}
+              alt={product.title}
+              sx={{ objectFit: 'cover' }}
+            >
+            </CardMedia>
             <CardContent>
               <Typography variant='h4'>{product.title}</Typography>
               <Typography variant='h6'>Available Quantity = {product.quantity}</Typography>
