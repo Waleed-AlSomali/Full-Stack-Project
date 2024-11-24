@@ -22,6 +22,7 @@ const AdminCreateProduct = () => {
     })
   };
 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
