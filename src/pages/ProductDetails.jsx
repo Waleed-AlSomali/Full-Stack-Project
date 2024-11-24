@@ -35,7 +35,8 @@ const ProductDetails = () => {
             image={product.imageUrl}
             alt={product.title}
             sx={{ objectFit: 'cover' }}
-          />
+          >
+          </CardMedia>
         )}
             <CardContent>
               <Typography variant='h4'>{product.title}</Typography>
