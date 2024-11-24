@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Button, Card, CardContent, Grid, Typography } from '@mui/material';
+import { Button, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import useCart from '../hooks/useCart';
 
 
@@ -13,6 +13,12 @@ const Product = ({ product }) => {
 
         <Grid item xs={12} sm={6} md={4} >
             <Card>
+                <CardMedia component="img"
+                    height="180"
+                    image={product.ImageUrl || 'https://via.placeholder.com/150'}
+                    alt={product.title}
+                    sx={{ objectFit: 'cover' }}>
+                </CardMedia>
                 <CardContent >
                     <Typography variant='h5'> {product.title}</Typography>
                     <Typography>Quantity = {product.quantity}</Typography>
