@@ -28,7 +28,6 @@ const ProductDetails = () => {
       {product && (
         <Container maxWidth="md" style={{ marginTop: '20px' }} >
           <Card>
-          {product.imageUrl && (
           <CardMedia
             component="img"
             height="400"
@@ -37,7 +36,6 @@ const ProductDetails = () => {
             sx={{ objectFit: 'cover' }}
           >
           </CardMedia>
-        )}
             <CardContent>
               <Typography variant='h4'>{product.title}</Typography>
               <Typography variant='h6'>Available Quantity = {product.quantity}</Typography>
