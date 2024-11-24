@@ -28,11 +28,11 @@ const ProductDetails = () => {
       {product && (
         <Container maxWidth="md" style={{ marginTop: '20px' }} >
           <Card>
-          {product.ImageUrl && (
+          {product.imageUrl && (
           <CardMedia
             component="img"
             height="400"
-            image={product.imageUrl}
+            src={product.imageUrl}
             alt={product.title}
             sx={{ objectFit: 'cover' }}
           >
