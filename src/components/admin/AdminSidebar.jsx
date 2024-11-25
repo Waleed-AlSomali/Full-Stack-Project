@@ -8,7 +8,7 @@ const AdminSidebar = () => {
       sx={{
         width: { xs: '100%', md: 250 },
         borderRight: { md: '1px solid #ddd' },
-        height: { md: '120vh' },
+        height: { md: '150vh' },
         padding: 2,
         borderBottom: { xs: '1px solid #ddd', md: 'none' },
         backgroundColor: '#333',
