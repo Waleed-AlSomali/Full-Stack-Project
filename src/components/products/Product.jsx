@@ -29,7 +29,7 @@ const Product = ({ product }) => {
                     sx={{
                         height: { xs: 'auto', sm: 200, md: 200 },
                         width: '100%',
-                        objectFit: 'fit',
+                        objectFit: 'contain',
                     }}
                     src={product.imageUrl}
                     alt={product.title}
