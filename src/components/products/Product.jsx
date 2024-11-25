@@ -12,7 +12,7 @@ const Product = ({ product }) => {
     return (
 
         <Grid item xs={12} sm={6} md={4} >
-            <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%', width: '50%' }}>
                 <CardMedia component="img"
                     height="180"
                     src={product.imageUrl}
