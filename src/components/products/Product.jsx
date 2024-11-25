@@ -21,7 +21,6 @@ const Product = ({ product }) => {
               sx={{ 
                 objectFit: 'contain',
                 height: 180,
-                width: '100%'
               }}
             />
             <CardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
