@@ -36,6 +36,17 @@ const Cart = () => {
                         sx={{ display: 'flex', marginBottom: 2, padding: 2 }}
                         key={item.productId}
                     >
+                        <CardMedia
+                    component="img"
+                    sx={{
+                      width: 120,
+                      height: 120,
+                      objectFit: 'cover',
+                      borderRadius: 1,
+                    }}
+                    image={item.imageUrl} 
+                    alt={item.title}
+                  />
                         <CardContent
                             sx={{
                                 display: 'flex',
