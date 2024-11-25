@@ -16,9 +16,9 @@ const Product = ({ product }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     height: '100%',
-                    boxShadow: 3, 
-                    borderRadius: 2, 
-                    transition: 'box-shadow 0.3s ease-in-out', 
+                    boxShadow: 3,
+                    borderRadius: 2,
+                    transition: 'box-shadow 0.3s ease-in-out',
                     '&:hover': {
                         boxShadow: 6,
                     },
@@ -26,10 +26,13 @@ const Product = ({ product }) => {
             >
                 <CardMedia
                     component="img"
-                    height="200"
+                    sx={{
+                        height: { xs: 'auto', sm: 200, md: 200 },
+                        width: '100%',
+                        objectFit: 'cover',
+                    }}
                     src={product.imageUrl}
                     alt={product.title}
-                    sx={{ objectFit: 'contain' }}
                 />
                 <CardContent>
                     <Typography variant="h5">{product.title}</Typography>
