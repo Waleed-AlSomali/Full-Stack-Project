@@ -36,7 +36,7 @@ const ProductDetails = () => {
               height="400"
               src={product.imageUrl}
               alt={product.title}
-              sx={{ objectFit: 'cover' }}
+              sx={{ objectFit: 'contain' }}
             >
             </CardMedia>
             <CardContent>
