@@ -8,19 +8,15 @@ const AdminSidebar = () => {
       sx={{
         width: { xs: '100%', md: 250 },
         borderRight: { md: '1px solid #ddd' },
-        height: '100vh', 
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        paddingTop: 2, 
-        paddingBottom: 8,
+        height: { md: '120vh' },
+        padding: 2,
         borderBottom: { xs: '1px solid #ddd', md: 'none' },
         backgroundColor: '#333',
         color: '#FFEB3B',
         display: 'flex',
         flexDirection: 'column',
-        overflowY: 'auto', 
-        zIndex: 1000, 
+        position: 'relative',
+        overflowY: 'auto'
       }}
     >
       <List>
@@ -40,7 +36,8 @@ const AdminSidebar = () => {
             paddingLeft: 2,
           }}
         >
-          <ListItemIcon sx={{ color: 'inherit' }} />
+          <ListItemIcon sx={{ color: 'inherit' }}>
+          </ListItemIcon>
           <ListItemText primary="Admin Dashboard" />
         </ListItemButton>
 
@@ -60,7 +57,8 @@ const AdminSidebar = () => {
             paddingLeft: 2,
           }}
         >
-          <ListItemIcon sx={{ color: 'inherit' }} />
+          <ListItemIcon sx={{ color: 'inherit' }}>
+          </ListItemIcon>
           <ListItemText primary="Products" />
         </ListItemButton>
 
@@ -80,7 +78,8 @@ const AdminSidebar = () => {
             },
           }}
         >
-          <ListItemIcon sx={{ color: 'inherit' }} />
+          <ListItemIcon sx={{ color: 'inherit' }}>
+          </ListItemIcon>
           <ListItemText primary="Create Product" />
         </ListItemButton>
       </List>
